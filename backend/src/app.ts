@@ -16,6 +16,8 @@ export default class App {
   }
 
   public start(port: number) {
-    this.#server.listen(port ,() => console.log('server running at port: ', port));
+    this.#server.listen(port, () =>
+      console.log('server running at port: ', port)
+    );
   }
 }
