@@ -1,5 +1,11 @@
 import Resultado from '../db/models/Resultado';
+import Student from '../db/models/Student';
+import { AsyncResponse } from '../types';
 
 export interface IModelResultado {
-  getById(id: string): Promise<Resultado | null>;
+  getAll(student: Student): AsyncResponse<Resultado[]>;
+}
+
+export interface IModelStudent {
+  getById(studentId: number): AsyncResponse<Student | null>
 }

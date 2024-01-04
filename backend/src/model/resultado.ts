@@ -1,4 +1,5 @@
 import Resultado from '../db/models/Resultado';
+import Student from '../db/models/Student';
 import { IModelResultado } from '../interfaces/Model';
 
 export default class ModelResultado implements IModelResultado {
@@ -8,7 +9,7 @@ export default class ModelResultado implements IModelResultado {
     this.#model = Resultado;
   }
 
-  async getById(id: string) {
-    return this.#model.findByPk(id);
+  getAll({ id, name }: Student) {
+    return this.#model.findAll( { where: {id: `student-${name}-${id}`}});
   }
 }

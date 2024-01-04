@@ -11,7 +11,7 @@ export default class ControllerResultado implements IControllerResultado {
 
   async getById(req: Request, res: Response) {
     const { id } = req.params;
-    const { status, payload } = await this.#service.getById(id);
+    const { status, payload } = await this.#service.getAll(Number(id));
     return res.status(status).json(payload);
   }
 }

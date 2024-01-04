@@ -1,13 +1,7 @@
 import Resultado from '../db/models/Resultado';
-import { AsyncResponse } from '../types';
+import { AsyncResponse, PayloadType, ServiceType } from '../types';
 
 export interface IServiceResultado {
-  getById(id: string): AsyncResponse<ServiceType<Resultado|null>>;
+  getAll(id: number): AsyncResponse<ServiceType<PayloadType<Resultado[]>>>;
 }
 
-export type ServiceType<T> = {
-  status: number;
-  payload: T;
-};
-
-export type PayloadType<T> = T | Error;
