@@ -1,24 +1,16 @@
 import { DataTypes, InferAttributes, Model, QueryInterface } from 'sequelize';
-import Resultado from '../models/Resultado';
+import Student from '../models/Student';
 
 export default {
   async up(queryInterface: QueryInterface) {
-    await queryInterface.createTable<Model<InferAttributes<Resultado>>>('resultados', {
+    await queryInterface.createTable<Model<InferAttributes<Student>>>('students', {
       id: {
         allowNull: false,
         type: DataTypes.STRING 
       },
-      bimestre: {
-        allowNull: false,
+      name: {
+        allowNull:false,
         type: DataTypes.STRING
-      },
-      disciplina: {
-        allowNull: false,
-        type: DataTypes.STRING
-      },
-      nota: {
-        allowNull: false,
-        type: DataTypes.FLOAT
       },
       createdAt: {
         allowNull: false,
@@ -33,6 +25,6 @@ export default {
     });
   },
   async down(queryInterface: QueryInterface) {
-    await queryInterface.dropTable('resultados');
+    await queryInterface.dropTable('students');
   }
 };

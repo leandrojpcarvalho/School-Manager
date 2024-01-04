@@ -1,7 +1,8 @@
 import { CreationOptional, DataTypes, InferAttributes, InferCreationAttributes, Model }from 'sequelize';
-import { TableResult } from '../../interfaces/resultado';
-import { Bimestre, Disciplina } from '../../interfaces/enums';
+import { TableResult } from '../../interfaces/Resultado';
+import { Bimestre, Disciplina } from '../../interfaces/Enums';
 import sequelize from '../config/database';
+import Student from './Student';
 
 class Resultado extends Model<InferAttributes<Resultado>, InferCreationAttributes<Resultado>> implements TableResult{
   declare id: string;
@@ -15,8 +16,7 @@ class Resultado extends Model<InferAttributes<Resultado>, InferCreationAttribute
 Resultado.init({
   id: {
     type: DataTypes.STRING,
-    primaryKey: true,
-    autoIncrement: true,
+    allowNull: false,
   },
   bimestre: {
     type: DataTypes.STRING,
@@ -45,5 +45,8 @@ Resultado.init({
   createdAt: 'criadoEm',
   updatedAt: 'atualizadoEm'
 });
+
+Resultado.belongsTo(Student);
+Student.hasMany(Resultado, {foreignKey: 'id', as: 'resultados'});
 
 export default Resultado;

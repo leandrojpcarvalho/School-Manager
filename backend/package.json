@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "tsc && npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate",
+    "prestart": "tsc && npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
     "start": "node ./build/server.js",
     "dev": "ts-node-dev src/server.ts"
   },

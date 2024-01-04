@@ -1,4 +1,4 @@
-import { Bimestre, Disciplina } from './enums';
+import { Bimestre, Disciplina } from './Enums';
 
 export interface TableResult {
   id: string;

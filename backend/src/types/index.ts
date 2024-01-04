@@ -1,0 +1,1 @@
+export type AsyncResponse<T> = Promise<T>;
