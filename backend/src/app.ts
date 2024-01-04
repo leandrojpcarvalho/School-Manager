@@ -1,18 +1,23 @@
 import express from 'express';
+import routes from './routes';
 
 export default class App {
   #server: express.Express;
+  #routesServer: {[key:string]: express.Router};
 
-  constructor(server = express()) {
+  constructor(server = express(), routesServer =  routes) {
     this.#server = server;
 
     this.#server.use(express.json());
+    this.#routesServer = routesServer;
 
     this.#routes();
   }
 
   #routes() {
-    this.#server.use('/', (req, res) => res.status(200).json('bem vindo'));
+    Object.entries(this.#routesServer).forEach(([name, route]) => {
+      this.#server.use(`/${name}`, route);
+    });
   }
 
   public start(port: number) {

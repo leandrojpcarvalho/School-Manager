@@ -16,6 +16,7 @@ class Resultado extends Model<InferAttributes<Resultado>, InferCreationAttribute
 Resultado.init({
   id: {
     type: DataTypes.STRING,
+    primaryKey: true,
     allowNull: false,
   },
   bimestre: {
