@@ -7,7 +7,7 @@ export default {
   async up (queryInterface:QueryInterface) {
     const seedData = [
       {
-        id: firstStudent,
+        student_id: firstStudent,
         bimestre: Bimestre.PRIMEIRO,
         disciplina: Disciplina.Artes,
         nota: 5,
@@ -15,7 +15,7 @@ export default {
         updated_at: '1990-1-1'
       },
       {
-        id: firstStudent,
+        student_id: firstStudent,
         bimestre: Bimestre.PRIMEIRO,
         disciplina: Disciplina.Biologia,
         nota: 5,
@@ -23,7 +23,7 @@ export default {
         updated_at: '1990-1-1'
       },
       {
-        id: firstStudent,
+        student_id: firstStudent,
         bimestre: Bimestre.PRIMEIRO,
         disciplina: Disciplina.Geografia,
         nota: 5,
@@ -31,7 +31,7 @@ export default {
         updated_at: '1990-1-1'
       },
       {
-        id: firstStudent,
+        student_id: firstStudent,
         bimestre: Bimestre.PRIMEIRO,
         disciplina: Disciplina.Sociologia,
         nota: 5,
@@ -39,7 +39,7 @@ export default {
         updated_at: '1990-1-1'
       },
       {
-        id: firstStudent,
+        student_id: firstStudent,
         bimestre: Bimestre.SEGUNDO,
         disciplina: Disciplina.Artes,
         nota: 5,
@@ -47,7 +47,7 @@ export default {
         updated_at: '1990-1-1'
       },
       {
-        id: firstStudent,
+        student_id: firstStudent,
         bimestre: Bimestre.SEGUNDO,
         disciplina: Disciplina.Biologia,
         nota: 3,
@@ -55,7 +55,7 @@ export default {
         updated_at: '1990-1-1'
       },
       {
-        id: firstStudent,
+        student_id: firstStudent,
         bimestre: Bimestre.SEGUNDO,
         disciplina: Disciplina.Geografia,
         nota: 5,
@@ -63,7 +63,7 @@ export default {
         updated_at: '1990-1-1'
       },
       {
-        id: firstStudent,
+        student_id: firstStudent,
         bimestre: Bimestre.SEGUNDO,
         disciplina: Disciplina.Sociologia,
         nota: 5,

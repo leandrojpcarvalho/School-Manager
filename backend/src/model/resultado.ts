@@ -10,6 +10,6 @@ export default class ModelResultado implements IModelResultado {
   }
 
   getAll({ id, name }: Student) {
-    return this.#model.findAll( { where: {id: `student-${name}-${id}`}});
+    return this.#model.findAll( { where: {studentId: `student-${name}-${id}`} });
   }
 }

@@ -5,7 +5,7 @@ import sequelize from '../config/database';
 import Student from './Student';
 
 class Resultado extends Model<InferAttributes<Resultado>, InferCreationAttributes<Resultado>> implements TableResult{
-  declare id: string;
+  declare studentId: string;
   declare bimestre: Bimestre;
   declare nota: number;
   declare disciplina: Disciplina;
@@ -14,7 +14,7 @@ class Resultado extends Model<InferAttributes<Resultado>, InferCreationAttribute
 }
 
 Resultado.init({
-  id: {
+  studentId: {
     type: DataTypes.STRING,
     primaryKey: true,
     allowNull: false,
@@ -43,11 +43,10 @@ Resultado.init({
   sequelize,
   modelName: 'resultados',
   timestamps: true,
-  createdAt: 'criadoEm',
-  updatedAt: 'atualizadoEm'
+  underscored: true
 });
 
 Resultado.belongsTo(Student);
-Student.hasMany(Resultado, {foreignKey: 'id', as: 'resultados'});
+Student.hasMany(Resultado, {foreignKey: 'student_id', as: 'resultados'});
 
 export default Resultado;

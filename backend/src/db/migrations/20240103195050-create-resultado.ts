@@ -4,9 +4,10 @@ import Resultado from '../models/Resultado';
 export default {
   async up(queryInterface: QueryInterface) {
     await queryInterface.createTable<Model<InferAttributes<Resultado>>>('resultados', {
-      id: {
+      studentId: {
         allowNull: false,
-        type: DataTypes.STRING 
+        type: DataTypes.STRING,
+        field: 'student_id'
       },
       bimestre: {
         allowNull: false,
