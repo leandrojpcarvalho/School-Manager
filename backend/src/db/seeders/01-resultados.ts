@@ -1,6 +1,5 @@
-import { InferAttributes, QueryInterface } from 'sequelize';
+import {  QueryInterface } from 'sequelize';
 import { Bimestre, Disciplina } from '../../interfaces/Enums';
-import Resultado from '../models/Resultado';
 
 const firstStudent = 'student-leandro-1';
 
