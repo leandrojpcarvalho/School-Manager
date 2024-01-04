@@ -1,0 +1,27 @@
+services:
+  db: 
+    image: mysql:8.0.32
+    container_name: school_manager_db_MB
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: school_manager
+    ports:
+      - 3306:3306
+  backend: 
+    build: backend
+    container_name: school_manager_backend
+    ports:
+      - 3333:3333
+    volumes:
+      - ./backend
+    command: dev
+    tty: true
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_NAME: school_manager
+      MYSQL_HOST: db
+      NODE_ENV: development
+      MYSQL_PORT: 3306
+    depends_on:
+      - db
