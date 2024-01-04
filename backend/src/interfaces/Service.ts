@@ -1,7 +1,9 @@
 import Resultado from '../db/models/Resultado';
-import { AsyncResponse, PayloadType, ServiceType } from '../types';
+import { InsertResultData, Service } from '../types';
+
 
 export interface IServiceResultado {
-  getAll(id: number): AsyncResponse<ServiceType<PayloadType<Resultado[]>>>;
+  getAll(id: number): Service<Resultado[]>;
+  insertNewResult(data: InsertResultData): Service<Resultado>;
 }
 
