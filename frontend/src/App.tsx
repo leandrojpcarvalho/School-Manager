@@ -1,6 +1,11 @@
+import SubjectCard from "./components/SubjectCard"
+
 function App() {
   return (
-    <p>oi!</p>
+    <div>
+      <SubjectCard subject="ingles" date="10/10/10" grade={10} />
+      <p>oi!</p>
+    </div>
   )
 }
 
