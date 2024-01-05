@@ -1,29 +1,22 @@
-import SubjectCard from '../SubjectCard';
-import images from '../../assets';
+import SubjectCard from '../ElementSubject/SubjectCard';
+import images from '../../../assets';
+import { SubjectInfo } from '../../../types';
 
 type PropType = {
-  onClick: (obj: any) => void;
-  subjectInfo: {
-    bimester: number;
-    subject: string;
-    date: string;
-    grade: number;
-  };
+  onClick: (obj: SubjectInfo) => void;
+  subjectInfo: SubjectInfo;
 };
 
 export default function ElementSubject(obj: PropType) {
-  const {
-    onClick,
-    subjectInfo: { bimester, ...rest },
-  } = obj;
+  const { onClick, subjectInfo } = obj;
   return (
     <div className="wrapper-content">
-      <SubjectCard {...rest} />
+      <SubjectCard {...subjectInfo} />
       <img
         src={images.trash}
-        alt={`remover nota da disciplina: ${rest.subject} do ${bimester}º bimestre`}
+        alt={`remover nota da disciplina: ${subjectInfo.disciplina} do ${subjectInfo.bimestre}º bimestre`}
         aria-hidden
-        onClick={onClick}
+        onClick={() => onClick(subjectInfo)}
       />
     </div>
   );

@@ -1,23 +1,25 @@
-import { PCustom } from "../../styledComponents";
-import images from '../../assets';
+import { PCustom } from '../../../../styledComponents';
+import images from '../../../../assets';
 import './style.css';
+import { SubjectInfo } from '../../../../types';
 
-type PropType = {
-  subject: string;
-  date: string;
-  grade: number;
-}
-
-function SubjectCard({subject, date, grade}: PropType) {
+function SubjectCard({ disciplina, creadaEm, nota }: SubjectInfo) {
   return (
     <div className="wrapper flex column">
       <div className="header flex column">
-        <PCustom $size={18} $weight={500}>{subject}</PCustom>
-        <PCustom>{date}</PCustom>
+        <PCustom
+          $size={18}
+          $weight={500}>
+          {disciplina}
+        </PCustom>
+        <PCustom>{creadaEm}</PCustom>
       </div>
       <div className="footer flex">
-        <img src={images.grade} alt="graphic of grades" />
-        <PCustom $color="#FF5964">Nota: {grade}</PCustom>
+        <img
+          src={images.grade}
+          alt="graphic of grades"
+        />
+        <PCustom $color="#FF5964">Nota: {nota}</PCustom>
       </div>
     </div>
   );
