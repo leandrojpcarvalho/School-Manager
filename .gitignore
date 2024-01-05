@@ -2,3 +2,4 @@ backend/node_modules
 backend/build
 backend/.env
 frontendt/node_modules
+/node_modules
