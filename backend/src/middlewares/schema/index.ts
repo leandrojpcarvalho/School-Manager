@@ -11,7 +11,7 @@ const disciplina = Object.values(Disciplina).filter((data) => !Number(data) && d
 export const resultSchema = Joi.object<BodyData, true>({
   bimestre: Joi.string().valid(...bimestre).required(),
   disciplina: Joi.string().valid(...disciplina).required(),
-  nota: Joi.number().integer().positive().required(),
+  nota: Joi.number().min(0).required(),
 });
 
 export const deleteSchema = Joi.object<DeleteData, true>({
