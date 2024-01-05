@@ -1,11 +1,11 @@
-import { PCustom } from '../../../../styledComponents';
+import { PCustom, Wrapper } from '../../../../styledComponents';
 import images from '../../../../assets';
 import './style.css';
 import { SubjectInfo } from '../../../../types';
 
 function SubjectCard({ disciplina, creadaEm, nota }: SubjectInfo) {
   return (
-    <div className="wrapper flex column">
+    <Wrapper $disciplina={disciplina}>
       <div className="header flex column">
         <PCustom
           $size={18}
@@ -21,7 +21,7 @@ function SubjectCard({ disciplina, creadaEm, nota }: SubjectInfo) {
         />
         <PCustom $color="#FF5964">Nota: {nota}</PCustom>
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
