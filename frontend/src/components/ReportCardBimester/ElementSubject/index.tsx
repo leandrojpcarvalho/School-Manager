@@ -10,7 +10,7 @@ type PropType = {
 export default function ElementSubject(obj: PropType) {
   const { onClick, subjectInfo } = obj;
   return (
-    <div className="wrapper-content">
+    <div className="wrapper-container flex">
       <SubjectCard {...subjectInfo} />
       <img
         src={images.trash}

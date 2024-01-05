@@ -47,3 +47,15 @@
 .footer :nth-child(2) {
   margin: 8px 0;
 }
+
+.bimester {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 31.5px 0;
+  margin: 30px 0;
+}
+
+.wrapper-container {
+  align-items: flex-start;
+  width: 50%;
+}

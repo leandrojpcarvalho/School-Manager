@@ -1,6 +1,5 @@
 import { PCustom, Wrapper } from '../../../../styledComponents';
 import images from '../../../../assets';
-import './style.css';
 import { SubjectInfo } from '../../../../types';
 
 function SubjectCard({ disciplina, creadaEm, nota }: SubjectInfo) {

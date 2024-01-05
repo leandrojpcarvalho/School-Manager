@@ -1,5 +1,6 @@
 import { SubjectInfo } from '../../types';
 import ElementSubject from './ElementSubject';
+import './style.css';
 
 type PropType = {
   cards: SubjectInfo[];
@@ -16,5 +17,5 @@ export default function ReportCardBimester({cards, removeCard}: PropType) {
       />
     ));
   };
-  return <div className="bimester">{generateBoard()}</div>;
+  return <div className="bimester flex">{generateBoard()}</div>;
 }

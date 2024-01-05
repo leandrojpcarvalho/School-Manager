@@ -25,4 +25,5 @@ export const Wrapper = styled.div<{$disciplina: keyof typeof Disciplina}>`
   flex-direction: column;
   max-width: 157px;
   padding: 16px 0;
+  flex-grow: 1;
 `;

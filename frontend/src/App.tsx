@@ -56,7 +56,7 @@ function App() {
   const generateBoard = () => {
     return Object.entries(data).map(([bimester, data]) => {
       return (
-        <div className='bimester' key={bimester}>
+        <div className='board flex column' key={bimester}>
           <PCustom $size={18}>{`Bimestre ${bimester}`}</PCustom>
           <ReportCardBimester cards={data} removeCard={removeCard}/>
         </div>
