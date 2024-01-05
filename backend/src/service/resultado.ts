@@ -25,7 +25,16 @@ export default class ServiceResultado implements IServiceResultado {
     await this.#validateIfNotExistResult({studentId: newStutendId, result});
     const newData: TableResult = {studentId: newStutendId, ...result};
     const payload = await this.#modelResultado.insertNewResult(newData);
-    return { status: 200, payload};
+    return { status: 201, payload};
+  }
+
+  async deleteResult(data: InsertResultData) {
+    const {dataValues: {id, name}} = await this.#validateStudent(Number(data.studentId));
+    const stutendId = `student-${name}-${id}`;
+    if (await this.#modelResultado.deleteResult({...data.result, studentId: stutendId}) !== 1) {
+      throw new CustomError('Register not found', 404);
+    }
+    return { status: 204, payload: null};
   }
 
   async #validateStudent(studentId: number) {

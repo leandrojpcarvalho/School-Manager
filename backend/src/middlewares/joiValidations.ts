@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { resultSchema } from './schema';
+import { deleteSchema, resultSchema } from './schema';
 
 export async function validateResultInsert(req: Request, res: Response, next: NextFunction) {
   try {
@@ -7,6 +7,18 @@ export async function validateResultInsert(req: Request, res: Response, next: Ne
     await resultSchema.validateAsync(body);
     next();
   } catch (error) {
-    return res.status(400).json({message: error.message});
+    if ((error instanceof Error)) return next({ message: error.message, status: 400});
+    next(error);
+  }
+}
+
+export async function validateDelete(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { body } = req;
+    await deleteSchema.validateAsync(body);
+    next();
+  } catch (error) {
+    if ((error instanceof Error)) return next({ message: error.message, status: 400});
+    next(error);
   }
 }

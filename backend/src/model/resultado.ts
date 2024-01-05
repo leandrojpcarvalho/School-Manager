@@ -31,4 +31,8 @@ export default class ModelResultado implements IModelResultado {
   insertNewResult(result: TableResult) {
     return this.#model.create(result);
   }
+
+  async deleteResult({bimestre, disciplina, studentId}: TableResult) {
+    return await this.#model.destroy({where: { bimestre, disciplina, studentId}});
+  }
 }

@@ -4,12 +4,4 @@ export class CustomError extends Error {
     super(message);
     this.status = status;
   }
-
-  getError() {
-    return {
-      status: this.status,
-      message: this.message,
-      stack: this.stack
-    };
-  }
 }

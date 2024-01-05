@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NextFunction, Request, Response } from 'express';
 import { CustomError } from '../CustomError';
 
@@ -5,8 +6,7 @@ function errorMiddleware(
   error: CustomError,
   _req: Request,
   res: Response,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _next: NextFunction
+  _next: NextFunction,
 ) {
   const status = error.status || 500;
   const message = error.message || 'something wrong';
