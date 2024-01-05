@@ -1,14 +1,13 @@
 import { CreationOptional, DataTypes, InferAttributes, InferCreationAttributes, Model }from 'sequelize';
-import { TableResult } from '../../interfaces/Resultado';
 import { Bimestre, Disciplina } from '../../interfaces/Enums';
 import sequelize from '../config/database';
 import Student from './Student';
 
-class Resultado extends Model<InferAttributes<Resultado>, InferCreationAttributes<Resultado>> implements TableResult{
+class Resultado extends Model<InferAttributes<Resultado>, InferCreationAttributes<Resultado>>{
   declare studentId: string;
-  declare bimestre: Bimestre;
+  declare bimestre: keyof typeof Bimestre;
   declare nota: number;
-  declare disciplina: Disciplina;
+  declare disciplina: keyof typeof Disciplina;
   declare createdAt: CreationOptional<string>;
   declare updatedAt: CreationOptional<string>;
 }

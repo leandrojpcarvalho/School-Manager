@@ -1,5 +1,4 @@
 import {  QueryInterface } from 'sequelize';
-import { Bimestre, Disciplina } from '../../interfaces/Enums';
 
 const firstStudent = 'student-leandro-1';
 
@@ -8,64 +7,64 @@ export default {
     const seedData = [
       {
         student_id: firstStudent,
-        bimestre: Bimestre.PRIMEIRO,
-        disciplina: Disciplina.Artes,
+        bimestre: 'PRIMEIRO',
+        disciplina: 'Artes',
         nota: 5,
         created_at: '1990-1-1',
         updated_at: '1990-1-1'
       },
       {
         student_id: firstStudent,
-        bimestre: Bimestre.PRIMEIRO,
-        disciplina: Disciplina.Biologia,
+        bimestre: 'PRIMEIRO',
+        disciplina: 'Biologia',
         nota: 5,
         created_at: '1990-1-1',
         updated_at: '1990-1-1'
       },
       {
         student_id: firstStudent,
-        bimestre: Bimestre.PRIMEIRO,
-        disciplina: Disciplina.Geografia,
+        bimestre: 'PRIMEIRO',
+        disciplina: 'Geografia',
         nota: 5,
         created_at: '1990-1-1',
         updated_at: '1990-1-1'
       },
       {
         student_id: firstStudent,
-        bimestre: Bimestre.PRIMEIRO,
-        disciplina: Disciplina.Sociologia,
+        bimestre: 'PRIMEIRO',
+        disciplina: 'Sociologia',
         nota: 5,
         created_at: '1990-1-1',
         updated_at: '1990-1-1'
       },
       {
         student_id: firstStudent,
-        bimestre: Bimestre.SEGUNDO,
-        disciplina: Disciplina.Artes,
+        bimestre: 'SEGUNDO',
+        disciplina: 'Artes',
         nota: 5,
         created_at: '1990-1-1',
         updated_at: '1990-1-1'
       },
       {
         student_id: firstStudent,
-        bimestre: Bimestre.SEGUNDO,
-        disciplina: Disciplina.Biologia,
+        bimestre: 'SEGUNDO',
+        disciplina: 'Biologia',
         nota: 3,
         created_at: '1990-1-1',
         updated_at: '1990-1-1'
       },
       {
         student_id: firstStudent,
-        bimestre: Bimestre.SEGUNDO,
-        disciplina: Disciplina.Geografia,
+        bimestre: 'SEGUNDO',
+        disciplina: 'Geografia',
         nota: 5,
         created_at: '1990-1-1',
         updated_at: '1990-1-1'
       },
       {
         student_id: firstStudent,
-        bimestre: Bimestre.SEGUNDO,
-        disciplina: Disciplina.Sociologia,
+        bimestre: 'SEGUNDO',
+        disciplina: 'Sociologia',
         nota: 5,
         created_at: '1990-1-1',
         updated_at: '1990-1-1'
