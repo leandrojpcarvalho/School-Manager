@@ -13,6 +13,7 @@ type PropType = {
 
 export default function AddNewGrade({ info, bimester, setIsShowingModal }: PropType) {
   const [selected, setSelected] = useState<SubjectInfo>();
+
   return (
     <div className="screen">
       <div className="modal-wrapper">
@@ -30,12 +31,14 @@ export default function AddNewGrade({ info, bimester, setIsShowingModal }: PropT
               <PCustom>Disciplina</PCustom>
               <div className="subjects flex">
                 {info.map((subject) => (
-                  <SubjectCard
-                  info={subject}
-                  key={subject.disciplina}
-                  notAllInfo={true}
-                  modal={true}
-                  />
+                  <div aria-hidden className="subjects flex" onClick={() => setSelected(subject)}>
+                    <SubjectCard
+                    info={subject}
+                    key={subject.disciplina}
+                    notAllInfo={true}
+                    modal={{isSelected: selected === subject }}
+                    />
+                  </div>
                   ))
                 }
               </div>
