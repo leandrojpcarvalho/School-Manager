@@ -2,7 +2,14 @@ import { PCustom, Wrapper } from '../../../../styledComponents';
 import images from '../../../../assets';
 import { SubjectInfo } from '../../../../types';
 
-function SubjectCard({ disciplina, creadaEm, nota }: SubjectInfo) {
+type PropType = {
+  info: SubjectInfo;
+  notAllInfo?: boolean;
+}
+
+function SubjectCard({ info, notAllInfo}: PropType) {
+  const { disciplina, creadaEm, nota } = info;
+  const showAllInfo = () => notAllInfo ? 'none' : ''
   return (
     <Wrapper $disciplina={disciplina}>
       <div className="header flex column">
@@ -11,9 +18,9 @@ function SubjectCard({ disciplina, creadaEm, nota }: SubjectInfo) {
           $weight={500}>
           {disciplina}
         </PCustom>
-        <PCustom>{creadaEm}</PCustom>
+        <PCustom className={showAllInfo()}>{creadaEm}</PCustom>
       </div>
-      <div className="footer flex">
+      <div className={`footer flex ${showAllInfo()}`}>
         <img
           src={images.grade}
           alt="graphic of grades"

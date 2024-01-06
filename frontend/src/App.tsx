@@ -5,6 +5,7 @@ import { Bimestre } from '../shared/enums';
 import ReportCardBimester from './components/ReportCardBimester';
 import { Button, PCustom } from './styledComponents';
 import './app.css';
+import AddNewGrade from './components/AddNewGrade';
 
 const INITIAL_STATE: BimesterBoard = {
   1: [],
@@ -15,8 +16,10 @@ const INITIAL_STATE: BimesterBoard = {
 
 function App() {
   const [data, setData] = useState<BimesterBoard>({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [modal, setModal] = useState<JSX.Element>();
+  const [selectedBimester, setSelectedBimester] = useState<Bimestre>(1);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     getData();
@@ -55,24 +58,33 @@ function App() {
     setData({...data, [key]: newBoard});
   }
 
+  const getModal = (bimester: number) => {
+    setShow(true);
+    setSelectedBimester(bimester);
+  }
+
   const generateBoard = () => {
     return Object.entries(data).map(([bimester, data]) => {
       return (
         <div className='board flex column' key={bimester}>
           <div className='bimester-info flex'>
             <PCustom $size={18}>{`Bimestre ${bimester}`}</PCustom>
-            <Button $image={images.add} aria-hidden onClick={() => setShowForm(!showForm)}/>
+            <Button $image={images.add} aria-hidden onClick={() => getModal(Number(bimester)) }/>
           </div>
-          <ReportCardBimester cards={data} removeCard={removeCard}/>
+          <ReportCardBimester cards={data} bimester={Number(bimester)} removeCard={removeCard}/>
         </div>
       )
     });
   }
 
   return (
-    <div className="page">
-      {generateBoard()}
-    </div>
+    <>
+      {/* {show ? modal : ''} */}
+      {show ? <AddNewGrade info={data[selectedBimester]} bimester={selectedBimester} setIsShowingModal={setShow}/> : ''}
+      <div className="page">
+            {generateBoard() }
+      </div>
+    </>
   );
 }
 
