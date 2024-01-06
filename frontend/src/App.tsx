@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { APIFetch, BimesterBoard, SubjectInfo } from './types';
+import images from './assets';
 import { Bimestre } from '../shared/enums';
 import ReportCardBimester from './components/ReportCardBimester';
-import { PCustom } from './styledComponents';
+import { Button, PCustom } from './styledComponents';
 import './app.css';
 
 const INITIAL_STATE: BimesterBoard = {
@@ -15,6 +16,7 @@ const INITIAL_STATE: BimesterBoard = {
 function App() {
   const [data, setData] = useState<BimesterBoard>({});
   const [isLoading, setIsLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     getData();
@@ -57,7 +59,10 @@ function App() {
     return Object.entries(data).map(([bimester, data]) => {
       return (
         <div className='board flex column' key={bimester}>
-          <PCustom $size={18}>{`Bimestre ${bimester}`}</PCustom>
+          <div className='bimester-info flex'>
+            <PCustom $size={18}>{`Bimestre ${bimester}`}</PCustom>
+            <Button $image={images.add} aria-hidden onClick={() => setShowForm(!showForm)}/>
+          </div>
           <ReportCardBimester cards={data} removeCard={removeCard}/>
         </div>
       )

@@ -47,10 +47,26 @@ table {
 	border-spacing: 0;
 }
 
-.board {
-  margin-left: 37px;
+/* begin */
+
+:root {
+	font-family: 'Montserrat', sans-serif;
 }
 
 .page {
+  margin: 0 34px;
+}
+
+.bimester-info {
+	justify-content: space-between;
+	align-items: center;
+}
+
+.bimester-info :nth-child(2) {
+	margin-right: 37px;
+}
+
+#root {
   background-color: black;
+  padding-top: 62px ;
 }
