@@ -34,6 +34,7 @@ export default function AddNewGrade({ info, bimester, setIsShowingModal }: PropT
                   info={subject}
                   key={subject.disciplina}
                   notAllInfo={true}
+                  modal={true}
                   />
                   ))
                 }

@@ -5,13 +5,14 @@ import { SubjectInfo } from '../../../../types';
 type PropType = {
   info: SubjectInfo;
   notAllInfo?: boolean;
+  modal?: boolean;
 }
 
-function SubjectCard({ info, notAllInfo}: PropType) {
+function SubjectCard({ info, notAllInfo, modal}: PropType) {
   const { disciplina, creadaEm, nota } = info;
   const showAllInfo = () => notAllInfo ? 'none' : ''
   return (
-    <Wrapper $disciplina={disciplina}>
+    <Wrapper className={modal ? 'flex' : ''} $disciplina={modal ? `${disciplina}Op` : disciplina}>
       <div className="header flex column">
         <PCustom
           $size={18}

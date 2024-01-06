@@ -33,12 +33,7 @@
 
 .header {
   justify-items: center;
-  align-items: center;
   justify-content: space-between;
-}
-
-.header :nth-child(1) {
-  margin: 0;
 }
 
 .wrapper-subjects {
@@ -52,7 +47,7 @@
 }
 
 .subjects > div {
-  align-items: center;
+  justify-content: center;
   width: 46%;
 }
 
@@ -64,4 +59,8 @@
 
 .none {
   display: none;
+}
+
+.test {
+
 }
