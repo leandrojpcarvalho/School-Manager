@@ -16,8 +16,16 @@ const INITIAL_STATE: BimesterBoard = {
 
 const URL = 'http://localhost:3333/result/1'
 
+const BIMESTER_MAP= {
+  1:'PRIMEIRO',
+  2: 'SEGUNDO',
+  3: 'TERCEIRO',
+  4: 'QUARTO',
+}
+
 function App() {
   const [data, setData] = useState<BimesterBoard>({});
+  const [tempSubjects, setTempSubject] = useState<SubjectInfo[]>([]);
   // const [isLoading, setIsLoading] = useState(false);
   // const [modal, setModal] = useState<JSX.Element>();
   const [selectedBimester, setSelectedBimester] = useState<Bimestre>(1);
@@ -26,6 +34,13 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    const changesToCommit = tempSubjects.filter((subject) => subject.isUpdated);
+    if(show === false && changesToCommit.length > 0 ) {
+      commitChanges(changesToCommit);
+    }
+  }, [show])
 
   const getData = async() => {
     try {
@@ -50,12 +65,15 @@ function App() {
     const request = new Request(URL, { method, body: JSON.stringify(dataModel[method](obj)), headers: { 'Content-Type': 'application/json' }})
     try {
       const res = await fetch(request)
-      if (method !== 'DELETE') {
+      if (method !== 'DELETE' && res.ok) {
         const info: APISubjectInfo = await res.json();
         const key = Bimestre[info.bimestre]
         const newData = data[key].filter((subject) => subject.disciplina !== info.disciplina);
         newData.push(transformData(info));
         setData({ ...data, [key]: newData })
+      } else {
+        const errorMessage = await res.json();
+        throw new Error(JSON.stringify(errorMessage));
       }
     } catch (error) {
       console.log(error);
@@ -78,9 +96,7 @@ function App() {
       };
   }
 
-  const dateFormatter = (dateSql: string) => {
-    return dateSql.split('T')[0].split('-').reverse().join('/');
-  };
+  const dateFormatter = (dateSql: string) => new Date(dateSql.split('.')[0]).toLocaleDateString('pt-BR');
 
   const removeCard = async (obj: SubjectInfo) => {
     await requestAPI(obj, 'DELETE');
@@ -89,9 +105,24 @@ function App() {
     setData({...data, [key]: newBoard});
   }
 
+  const tempDate = (newDate: SubjectInfo) => {
+    const newTemp = [...tempSubjects.filter((subject)=> subject.disciplina !== newDate.disciplina), newDate];
+    setTempSubject(newTemp);
+  }
+
   const getModal = (bimester: number) => {
     setShow(true);
     setSelectedBimester(bimester);
+    setTempSubject(data[bimester]);
+  }
+
+  const commitChanges = async (changes: SubjectInfo[]) => {
+    try {
+      await Promise.all(changes.map((change) => requestAPI(change, 'POST')));
+      setTempSubject([]);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const generateBoard = () => {
@@ -111,7 +142,7 @@ function App() {
   return (
     <>
       {/* {show ? modal : ''} */}
-      {show ? <AddNewGrade info={data[selectedBimester]} bimester={selectedBimester} setIsShowingModal={setShow}/> : ''}
+      {show ? <AddNewGrade info={tempSubjects} bimestre={BIMESTER_MAP[selectedBimester]} setIsShowingModal={setShow} setTempSubject={tempDate}/> : ''}
       <div className="page">
             {generateBoard() }
       </div>
