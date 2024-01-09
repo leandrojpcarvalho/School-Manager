@@ -1,33 +1,17 @@
-import React, { HTMLInputTypeAttribute, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Input, PCustom } from '../../styledComponents';
 import { SubjectInfo } from '../../types';
 import images from '../../assets';
 import SubjectCard from '../ReportCardBimester/ElementSubject/SubjectCard';
-import { Disciplina, Bimestre } from '../../../shared/enums';
+import { Bimestre } from '../../../shared/enums';
 import './style.css';
-import { number } from 'joi';
 
 type PropType = {
   info: SubjectInfo[];
   bimestre: keyof typeof Bimestre;
   setIsShowingModal: (param: boolean) => void;
-  setTempSubject: (obj: SubjectInfo) => void;
+  setTempSubject: (obj: SubjectInfo[]) => void;
 };
-
-const SUBJECTS: (keyof typeof Disciplina)[] = [
-  'Biologia',
-  'Artes',
-  'Geografia',
-  'Sociologia',
-];
-
-const INITIAL_STATE_SUBJECT = {
-  bimestre: '',
-  creadaEm: '',
-  disciplina: '',
-  nota: 0,
-  studentId: '',
-}
 
 export default function AddNewGrade({
   info,
@@ -38,7 +22,7 @@ export default function AddNewGrade({
   const [selected, setSelected] = useState<SubjectInfo>();
   const [nota, setNota] = useState<string>('0.0');
   const [error, setError] = useState<string>();
-
+  
   useEffect(() => {
     if(selected) {
       setNota(selected.nota.toFixed(1))
@@ -65,19 +49,6 @@ export default function AddNewGrade({
     );
   };
 
-  const createNewSubject = (disciplina: keyof typeof Disciplina) => {
-    const newDate = {
-      bimestre,
-      creadaEm: new Date().toLocaleDateString('pt-br'),
-      disciplina,
-      nota: 0,
-      studentId: 'student',
-      isUpdated: false,
-    };
-    setTempSubject(newDate);
-    return newDate;
-  }
-
   const rangeGradeValidation = (grade: string | undefined) => {
     const value = Number(grade);
     return value >= 0 && value <= 10;
@@ -85,7 +56,8 @@ export default function AddNewGrade({
 
   const onClick = () => {
     if(selected && rangeGradeValidation(nota)) {
-      setTempSubject({ ...selected, nota: Number(nota), isUpdated: true })
+      const newData: SubjectInfo = {...selected, isUpdated:true, nota: Number(nota) };
+      setTempSubject([...info.filter((subjct) => subjct !== selected), newData]);
       setError(undefined);
     } else {
       setError('A nota deve ser um numero entre 0 e 10');
@@ -120,17 +92,7 @@ export default function AddNewGrade({
           <section className="wrapper-subjects flex column">
             <>
               <PCustom>Disciplina</PCustom>
-              <div className="subjects flex">
-                {SUBJECTS.map((subject) => {
-                  const subjectInfo = info.find(
-                    (sub) => sub.disciplina === subject
-                  );
-                  if (subjectInfo) {
-                    return JSXSubject(subjectInfo);
-                  }
-                  return JSXSubject(createNewSubject(subject));
-                })}
-              </div>
+              {info.map((subject) => JSXSubject(subject))}
             </>
           </section>
           <section className="grade flex column">

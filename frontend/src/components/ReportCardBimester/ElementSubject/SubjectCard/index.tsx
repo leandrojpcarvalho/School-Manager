@@ -14,7 +14,7 @@ function SubjectCard({ info, notAllInfo, modal}: PropType) {
   const { disciplina, creadaEm, nota } = info;
   const showAllInfo = () => notAllInfo ? 'none' : ''
   return (
-    <Wrapper className={modal ? 'flex' : ''} $disciplina={modal && modal.isSelected ? disciplina : `${disciplina}Op`}>
+    <Wrapper className={modal ? 'flex' : ''} $disciplina={modal ? (modal.isSelected ? disciplina : `${disciplina}Op`) : disciplina}>
       <div className="header flex column">
         <PCustom
           $size={18}
