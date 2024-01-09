@@ -4,7 +4,6 @@ const URL = 'http://localhost:3333/result/1';
 
 
 export default function useAPIConnection() {
-
   const getAllData = async() => {
     try {
       const res = await fetch(URL);
@@ -40,7 +39,6 @@ export default function useAPIConnection() {
     } 
   }
 
-
   const commitChanges = async (changes: SubjectInfo[]) => {
     try {
       const arrayData: APISubjectInfo[]= await Promise.all(
@@ -55,7 +53,6 @@ export default function useAPIConnection() {
       console.log(error);
     } 
   };
-
 
   return { requestAPI, getAllData, commitChanges }
 }

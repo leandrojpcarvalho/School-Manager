@@ -25,3 +25,16 @@ services:
       MYSQL_PORT: 3306
     depends_on:
       - db
+  frontend: 
+    build: frontend
+    container_name: school_manager_frontend
+    ports:
+      - 3000:3000
+    command: dev
+    volumes:
+      - /home/leandro/programacao/avaliacoes/MBPsicologia
+    tty: true
+    environment:
+      - VITE_BASE_URL=http://localhost:3333
+    depends_on:
+      - backend
