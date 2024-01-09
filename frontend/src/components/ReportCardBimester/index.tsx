@@ -29,7 +29,6 @@ export default function ReportCardBimester({ cards, bimestre }: PropType) {
   };
   
   const JSXModal = () => {
-    console.log(tempSubjects, bimestre);
     if (show) {
       return (
         <div className="modal">

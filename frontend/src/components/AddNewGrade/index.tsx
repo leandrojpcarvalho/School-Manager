@@ -36,7 +36,7 @@ export default function AddNewGrade({
     return (
       <div
         aria-hidden
-        className="subjects flex"
+        className="subjects-details flex"
         key={`bimester-${obj.disciplina}`}
         onClick={() => setSelected(obj)}>
         <SubjectCard
@@ -78,6 +78,7 @@ export default function AddNewGrade({
           <section className="header flex">
             <PCustom
               $size={32}
+              className='modal'
               $weight={500}>
               {`Bimestre ${Bimestre[bimestre]}`}
             </PCustom>
@@ -90,36 +91,39 @@ export default function AddNewGrade({
             />
           </section>
           <section className="wrapper-subjects flex column">
-            <>
-              <PCustom>Disciplina</PCustom>
-              {info.map((subject) => JSXSubject(subject))}
-            </>
+            <PCustom>Disciplina</PCustom>
+            <div className="subjects-info">
+            {info.map((subject) => JSXSubject(subject))}
+            </div>
           </section>
-          <section className="grade flex column">
-            <PCustom $size={14}>Nota</PCustom>
-            <div className='flex'>
+          <section className='grade-wrapper flex'>
+            <div className="grade flex column">
+              <PCustom $size={14}>Nota</PCustom>
               <Input
                 type="text"
                 value={nota}
                 name="grade"
                 onChange={(e) => setNota(e.target.value) }
               />
+            </div>
+            <div>
               {JSXError()}
             </div>
-            
           </section>
         </div>
-        <Button
-          $padding="16px 25px"
-          $image="">
-          <PCustom
-            $color="0F0F0F"
-            $weight={600}
-            onClick={onClick}
-          >
-            Confirmar
-          </PCustom>
-        </Button>
+        <div className='button'>
+          <Button
+            $padding="16px 25px"
+            $image="">
+            <PCustom
+              $color="0F0F0F"
+              $weight={600}
+              onClick={onClick}
+            >
+              Confirmar
+            </PCustom>
+          </Button>
+        </div>
       </div>
     </div>
   );

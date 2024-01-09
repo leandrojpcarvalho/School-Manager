@@ -8,12 +8,11 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  overflow: hidden;
 }
 
 .modal-wrapper {
   position: fixed;
-  top: 10%;
+  top: 30%;
   display: flex;
   gap: 24px;
   flex-direction: column;
@@ -23,16 +22,24 @@
   background-color: rgba(15, 15, 15, 1);
   padding-bottom: 24px;
   width: 100%;
-  align-items: center
+  align-items: flex-end
 }
 
 .modal-wrapper > .subjects.flex.column {
-  padding: 25px;
+  padding: 25px 0;
+}
+
+.modal-wrapper > .subjects > .header {
+  align-items: center;
 }
 
 .header {
   justify-items: center;
   justify-content: space-between;
+  &> .modal {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .wrapper-subjects {
@@ -41,19 +48,40 @@
 }
 
 .subjects {
-  flex-wrap: wrap;
   gap: 23px ;
   width: 100%;
 }
 
-.subjects > div {
-  justify-content: center;
-  width: 46%;
+.subjects > section{
+  margin-left: 47px ;
+  margin-right: 25px;
 }
 
+.subjects-info {
+  flex-flow: row wrap;
+  display: flex;
+  width: 100%;
+  gap: 23px;
+}
+
+.subjects-details {
+  min-width: 130px;
+  max-width: 130px;
+}
+
+.subjects-details>div {
+  justify-content: center;
+}
+
+.grade-wrapper {
+  align-items: center;
+  gap: 10px;
+  width: 70%;
+}
 
 .grade {
-  width: 30%;
+  width: 101px;
+  height: max-content;
   gap: 8px;
 }
 
@@ -63,4 +91,11 @@
 
 .selected {
   opacity: 1;
+}
+
+.button {
+  margin-right: 31px;
+  &> div {
+    min-width: 84px;
+  }
 }

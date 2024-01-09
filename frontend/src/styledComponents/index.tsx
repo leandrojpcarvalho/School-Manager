@@ -40,6 +40,7 @@ export const Button = styled.div<{$image: string, $color?: string, $padding?: st
   background-position: center;
   background-repeat: no-repeat;
   text-align: center;
+  width: ${props => props.$image === '' ? '100%': 'auto'}
 `;
 
 export const Input = styled.input`
@@ -48,5 +49,4 @@ export const Input = styled.input`
   border-radius: 12px;
   color: rgba(109, 109, 109, 1);
   padding: 12px 16px;
-  width: fill;
 `;
