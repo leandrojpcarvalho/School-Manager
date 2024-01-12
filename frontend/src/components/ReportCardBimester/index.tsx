@@ -5,8 +5,8 @@ import './style.css';
 import { PCustom, Button } from '../../styledComponents';
 import images from '../../assets';
 import useModal from '../../hooks/Modal';
-import AddNewGrade from '../AddNewGrade';
 import { BIMESTER_MAP } from '../../utils';
+import Modal from '../Modal';
 
 type PropType = {
   cards: APIFetch;
@@ -27,13 +27,13 @@ export default function ReportCardBimester({ cards, bimestre }: PropType) {
       />
     ));
   };
-  
+
   const JSXModal = () => {
     if (show) {
       return (
         <div className="modal">
-          <AddNewGrade
-            bimestre={BIMESTER_MAP[bimestre-1]}
+          <Modal
+            bimestre={BIMESTER_MAP[bimestre - 1]}
             info={tempSubjects}
             setIsShowingModal={setShow}
             setTempSubject={setTempSubject}

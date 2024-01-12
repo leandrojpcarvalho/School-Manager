@@ -12,10 +12,11 @@ services:
     container_name: school_manager_backend
     ports:
       - 3333:3333
-    command: dev
     volumes:
-      - /home/leandro/programacao/avaliacoes/MBPsicologia
+      # - /home/leandro/programacao/avaliacoes/MBPsicologia/backend
+      - ./backend:/app/backend:rw
     tty: true
+    restart: always
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
@@ -32,7 +33,8 @@ services:
       - 3000:3000
     command: dev
     volumes:
-      - /home/leandro/programacao/avaliacoes/MBPsicologia
+      - /home/leandro/programacao/avaliacoes/MBPsicologia/frontend
+      - ./frontend:/app/frontend:rw
     tty: true
     environment:
       - VITE_BASE_URL=http://localhost:3333

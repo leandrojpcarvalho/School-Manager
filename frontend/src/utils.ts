@@ -1,13 +1,14 @@
 import { Bimestre, Disciplina } from "../shared/enums";
 import { APIFetch, APISubjectInfo, BimesterBoard, BimestreType, SubjectInfo } from "./types";
 
-export const BIMESTER_MAP: (keyof typeof Bimestre)[] = ['PRIMEIRO','SEGUNDO','TERCEIRO','QUARTO'];
+export const BIMESTER_MAP: (keyof typeof Bimestre)[] = ['PRIMEIRO','SEGUNDO','TERCEIRO', "QUARTO"];
 export const SUBJECTS: (keyof typeof Disciplina)[] = [
   'Biologia',
   'Artes',
   'Geografia',
   'Sociologia',
 ];
+
 
 const INITIAL_STATE: BimesterBoard = {
   1: [],
