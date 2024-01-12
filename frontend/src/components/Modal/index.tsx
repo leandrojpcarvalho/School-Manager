@@ -20,6 +20,17 @@ export default function Modal({
 }: PropType) {
   const { nota, error, selected, added, onClick, setSelected, setNota} = useModalElements(setTempSubject, info);
 
+  const setClass = () => {
+    if(error) {
+      return 'error'
+    } 
+    if (added) {
+      return 'modal'
+    } else {
+      return 'removing-item'
+    }
+  }
+
   const JSXError = () => {
     if (error) {
       return (
@@ -78,6 +89,7 @@ export default function Modal({
           type="text"
           value={nota}
           name="grade"
+          className={setClass()}
           onChange={(e) => setNota(e.target.value)}
         />
       </>
@@ -91,6 +103,7 @@ export default function Modal({
       $image="">
       <PCustom
         $color="0F0F0F"
+        className={setClass()}
         $weight={600}
         onClick={onClick}>
         { added ? 'data has been Updated': 'Confirmar'}

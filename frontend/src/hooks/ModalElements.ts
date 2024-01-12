@@ -17,7 +17,11 @@ export default function useModalElements(setTempSubject: (param: SubjectInfo[]) 
   }, [selected]);
 
   useEffect(() => {
-    setInterval(() => setAdded(false), 3000);
+    setInterval(() => resetStatus(), 5000);
+    const resetStatus = () => {
+      setError(undefined);
+      setAdded(false)
+    }
   }, [added])
 
   const rangeGradeValidation = (grade: string | undefined) => {
