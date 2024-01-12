@@ -5,6 +5,7 @@ export default function useModalElements(setTempSubject: (param: SubjectInfo[]) 
   const [selected, setSelected] = useState<SubjectInfo>();
   const [nota, setNota] = useState<string>('0.0');
   const [error, setError] = useState<string>();
+  const [added, setAdded] = useState<boolean>(false);
 
   useEffect(() => {
     if (selected) {
@@ -14,6 +15,10 @@ export default function useModalElements(setTempSubject: (param: SubjectInfo[]) 
       setNota('0.0');
     }
   }, [selected]);
+
+  useEffect(() => {
+    setInterval(() => setAdded(false), 3000);
+  }, [added])
 
   const rangeGradeValidation = (grade: string | undefined) => {
     const value = Number(grade);
@@ -26,11 +31,13 @@ export default function useModalElements(setTempSubject: (param: SubjectInfo[]) 
       updatedInfo.nota = Number(nota),
       updatedInfo.isUpdated = true;
       setTempSubject(info);
+      setNota(Number(nota).toFixed(1));
+      setAdded(true);
       setError(undefined);
     } else {
       setError('A nota deve ser um numero entre 0 e 10');
     }
   };
 
-  return { nota, error, selected, onClick,setSelected, setNota }
+  return { nota, error, selected, added, onClick,setSelected, setNota }
 }

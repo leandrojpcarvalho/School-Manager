@@ -51,7 +51,7 @@ export default function ReportCardBimester({ cards, bimestre }: PropType) {
         <Button
           $image={images.add}
           aria-hidden={false}
-          onClick={() => setShowModal(subjects, bimestre)}
+          onClick={() => setShowModal(subjects, bimestre-1)}
         />
       </div>
       <div className="bimester flex">{generateBimesterBoard()}</div>

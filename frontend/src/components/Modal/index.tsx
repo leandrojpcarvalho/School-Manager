@@ -18,7 +18,7 @@ export default function Modal({
   setIsShowingModal,
   setTempSubject,
 }: PropType) {
-  const { nota, error, selected, onClick, setSelected, setNota} = useModalElements(setTempSubject, info);
+  const { nota, error, selected, added, onClick, setSelected, setNota} = useModalElements(setTempSubject, info);
 
   const JSXError = () => {
     if (error) {
@@ -93,7 +93,7 @@ export default function Modal({
         $color="0F0F0F"
         $weight={600}
         onClick={onClick}>
-        Confirmar
+        { added ? 'data has been Updated': 'Confirmar'}
       </PCustom>
     </Button>
     );
