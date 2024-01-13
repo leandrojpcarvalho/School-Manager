@@ -53,6 +53,10 @@ table {
 	font-family: 'Montserrat', sans-serif;
 }
 
+img {
+  cursor: pointer;
+}
+
 .page {
   margin: 0 auto;
 	min-width: 440px;
@@ -68,4 +72,35 @@ table {
 #root {
   background-color: black;
   padding-top: 62px ;
+}
+
+@media (min-width: 850px) {
+  .wrapper-container {
+    width: 25%;
+    gap: 9px;
+  }
+
+  .button {
+    margin-right: 58px;
+  }
+  .board {
+    max-width: none;
+  }
+
+  .modal-wrapper {
+    max-width: 678px;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.grow:hover
+{
+  transition: 0.2s ease-in-out;
+  -xpedu-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }

@@ -78,22 +78,3 @@
 .content {
   display: none;
 }
-
-@media (min-width: 850px) {
-  .wrapper-container {
-    width: 25%;
-    gap: 9px;
-  }
-
-  .button {
-    margin-right: 58px;
-  }
-  .board {
-    max-width: none;
-  }
-
-  .content {
-    display: flex;
-    align-items: center;
-  }
-}

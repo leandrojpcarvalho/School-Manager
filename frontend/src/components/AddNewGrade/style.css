@@ -93,11 +93,11 @@
   opacity: 1;
 }
 
-.modal {
+.fade-in {
   animation: fadeIn .6s ease-in-out;
 }
 
-.removing-item {
+.fade-out {
   animation: fadeOut .6 ease-in-out;
 }
 

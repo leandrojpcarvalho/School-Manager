@@ -32,6 +32,7 @@ export const Wrapper = styled.div<{$disciplina: keyof typeof RESOLVE_STYLE}>`
 
 export const Button = styled.div<{$image: string, $color?: string, $padding?: string}>`
   ${props => props.$image !== '' ? '': 'width: fit-content;' }
+  cursor: pointer;
   background-color: #${props => props.$color ? props.$color : 'E9FF1A'};
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   border-radius: 12px;

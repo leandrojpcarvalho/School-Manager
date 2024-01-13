@@ -1,7 +1,7 @@
 import { Bimestre } from '../../../shared/enums';
 import { PCustom, Button, Input } from '../../styledComponents';
 import { SubjectInfo } from '../../types';
-import images from '../../assets'
+import images from '../../assets';
 import AddNewGrade from '../AddNewGrade';
 import useModalElements from '../../hooks/ModalElements';
 
@@ -18,18 +18,19 @@ export default function Modal({
   setIsShowingModal,
   setTempSubject,
 }: PropType) {
-  const { nota, error, selected, added, onClick, setSelected, setNota} = useModalElements(setTempSubject, info);
+  const { nota, error, selected, added, onClick, setSelected, setNota } =
+    useModalElements(setTempSubject, info);
 
   const setClass = () => {
-    if(error) {
-      return 'error'
-    } 
-    if (added) {
-      return 'modal'
-    } else {
-      return 'removing-item'
+    if (error) {
+      return 'error';
     }
-  }
+    if (added) {
+      return 'fade-in';
+    } else {
+      return 'fade-out';
+    }
+  };
 
   const JSXError = () => {
     if (error) {
@@ -46,7 +47,11 @@ export default function Modal({
   const JSXSubjects = () => {
     return (
       <>
-        <PCustom>Disciplina</PCustom>
+        <PCustom
+          $size={18}
+          $weight={500}>
+          Disciplina
+        </PCustom>
         <div className="subjects-info">
           {info.map((subject) => (
             <AddNewGrade
@@ -99,18 +104,20 @@ export default function Modal({
   const JSXButton = () => {
     return (
       <Button
-      $padding="16px 25px"
-      $image="">
-      <PCustom
-        $color="0F0F0F"
-        className={setClass()}
-        $weight={600}
-        onClick={onClick}>
-        { added ? 'data has been Updated': 'Confirmar'}
-      </PCustom>
-    </Button>
+        className="grow"
+        $padding="16px 25px"
+        onClick={onClick}
+        aria-hidden
+        $image="">
+        <PCustom
+          $color="0F0F0F"
+          className={setClass()}
+          $weight={600}>
+          {added ? 'data has been Updated' : 'Confirmar'}
+        </PCustom>
+      </Button>
     );
-  }
+  };
 
   return (
     <div className="screen">
@@ -121,15 +128,11 @@ export default function Modal({
             {JSXSubjects()}
           </section>
           <section className="grade-wrapper flex">
-            <div className="grade flex column">
-              {JSXGrade()}
-            </div>
+            <div className="grade flex column">{JSXGrade()}</div>
             <div>{JSXError()}</div>
           </section>
         </div>
-        <div className="button">
-          {JSXButton()}
-        </div>
+        <div className="button">{JSXButton()}</div>
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ export default function ElementSubject(obj: PropType) {
       <SubjectCard info={subjectInfo}/>
       
       <img
+        className='grow'
         src={images.trash}
         alt={`remover nota da disciplina: ${subjectInfo.disciplina} do ${subjectInfo.bimestre}º bimestre`}
         aria-hidden

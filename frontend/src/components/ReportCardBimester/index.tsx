@@ -31,7 +31,7 @@ export default function ReportCardBimester({ cards, bimestre }: PropType) {
   const JSXModal = () => {
     if (show) {
       return (
-        <div className="modal">
+        <div className="fade-in">
           <Modal
             bimestre={BIMESTER_MAP[bimestre - 1]}
             info={tempSubjects}
@@ -51,7 +51,7 @@ export default function ReportCardBimester({ cards, bimestre }: PropType) {
         <Button
           $image={''}
           aria-hidden={false}
-          className='flex button'
+          className='flex button grow'
           onClick={() => setShowModal(subjects, bimestre-1)}
         >
           <PCustom $color='black' $size={16}  $weight={600} className='flex content'>
