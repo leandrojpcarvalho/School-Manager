@@ -7,13 +7,18 @@ services:
       MYSQL_DATABASE: school_manager
     ports:
       - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+    restart: 'always'
+
   backend: 
     build: backend
     container_name: school_manager_backend
     ports:
       - 3333:3333
     volumes:
-      # - /home/leandro/programacao/avaliacoes/MBPsicologia/backend
       - ./backend:/app/backend:rw
     tty: true
     restart: always
@@ -25,7 +30,12 @@ services:
       NODE_ENV: development
       MYSQL_PORT: 3306
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3333"]
+      timeout: 10s
+      retries: 5
   frontend: 
     build: frontend
     container_name: school_manager_frontend
@@ -39,4 +49,5 @@ services:
     environment:
       - VITE_BASE_URL=http://localhost:3333
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy

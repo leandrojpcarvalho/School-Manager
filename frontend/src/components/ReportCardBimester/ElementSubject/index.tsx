@@ -12,6 +12,7 @@ export default function ElementSubject(obj: PropType) {
   return (
     <div className="wrapper-container flex">
       <SubjectCard info={subjectInfo}/>
+      
       <img
         src={images.trash}
         alt={`remover nota da disciplina: ${subjectInfo.disciplina} do ${subjectInfo.bimestre}º bimestre`}

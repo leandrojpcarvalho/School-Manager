@@ -54,7 +54,10 @@ table {
 }
 
 .page {
-  margin: 0 34px;
+  margin: 0 auto;
+	min-width: 440px;
+	max-width: 860px;
+
 }
 
 .bimester-info {
@@ -62,7 +65,7 @@ table {
 	align-items: center;
 }
 
-.bimester-info :nth-child(2) {
+.bimester-info >:nth-child(2) {
 	margin-right: 37px;
 }
 

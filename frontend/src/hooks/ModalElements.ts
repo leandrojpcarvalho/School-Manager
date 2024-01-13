@@ -17,7 +17,7 @@ export default function useModalElements(setTempSubject: (param: SubjectInfo[]) 
   }, [selected]);
 
   useEffect(() => {
-    setInterval(() => resetStatus(), 5000);
+    setInterval(() => resetStatus(), 8000);
     const resetStatus = () => {
       setError(undefined);
       setAdded(false)

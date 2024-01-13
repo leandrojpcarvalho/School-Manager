@@ -31,16 +31,16 @@ export const Wrapper = styled.div<{$disciplina: keyof typeof RESOLVE_STYLE}>`
 `;
 
 export const Button = styled.div<{$image: string, $color?: string, $padding?: string}>`
+  ${props => props.$image !== '' ? '': 'width: fit-content;' }
   background-color: #${props => props.$color ? props.$color : 'E9FF1A'};
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   border-radius: 12px;
-  max-width: 58px;
   padding: ${props => props.$padding ? props.$padding : '16px 32px'};
   background-image: url(${props => props.$image});
   background-position: center;
   background-repeat: no-repeat;
   text-align: center;
-  width: ${props => props.$image === '' ? '100%': 'auto'}
+  
 `;
 
 export const Input = styled.input`

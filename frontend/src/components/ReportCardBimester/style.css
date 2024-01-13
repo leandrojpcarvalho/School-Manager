@@ -2,6 +2,11 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+.board {
+  max-width: 470px;
+  margin: 0 auto;
+}
+
 .flex {
   display: flex;
 }
@@ -23,7 +28,9 @@
   padding: 16px 0;
 }
 
-
+.button {
+  gap: 10px;
+}
 
 .header  {
   gap: 8px;
@@ -58,4 +65,23 @@
 .wrapper-container {
   align-items: flex-start;
   width: 50%;
+}
+
+.content {
+  display: none;
+}
+
+@media (min-width: 850px) {
+  .wrapper-container {
+    width: 25%;
+  }
+
+  .board {
+    max-width: none;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+  }
 }

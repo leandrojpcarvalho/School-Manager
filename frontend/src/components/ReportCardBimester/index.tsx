@@ -49,10 +49,16 @@ export default function ReportCardBimester({ cards, bimestre }: PropType) {
       <div className="bimester-info flex">
         <PCustom $size={18}>{`Bimestre ${bimestre}`}</PCustom>
         <Button
-          $image={images.add}
+          $image={''}
           aria-hidden={false}
+          className='flex button'
           onClick={() => setShowModal(subjects, bimestre-1)}
-        />
+        >
+          <PCustom $color='black' $size={16}  $weight={600} className='flex content'>
+            Lançar nota
+          </PCustom>
+          <img src={images.add} alt="" />
+        </Button>
       </div>
       <div className="bimester flex">{generateBimesterBoard()}</div>
     </>
