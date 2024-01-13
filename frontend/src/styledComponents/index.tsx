@@ -35,12 +35,11 @@ export const Button = styled.div<{$image: string, $color?: string, $padding?: st
   background-color: #${props => props.$color ? props.$color : 'E9FF1A'};
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   border-radius: 12px;
-  padding: ${props => props.$padding ? props.$padding : '16px 32px'};
+  padding: ${props => props.$padding ? props.$padding : '3px 13px'};
   background-image: url(${props => props.$image});
   background-position: center;
   background-repeat: no-repeat;
   text-align: center;
-  
 `;
 
 export const Input = styled.input`

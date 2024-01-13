@@ -65,10 +65,6 @@ table {
 	align-items: center;
 }
 
-.bimester-info >:nth-child(2) {
-	margin-right: 37px;
-}
-
 #root {
   background-color: black;
   padding-top: 62px ;

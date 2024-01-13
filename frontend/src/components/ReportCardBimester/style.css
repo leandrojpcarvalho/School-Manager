@@ -29,7 +29,15 @@
 }
 
 .button {
+  margin-right: 78px;
   gap: 10px;
+  &> img {
+    width: 32px;
+    height: 32px;
+  }
+  &> div {
+    min-width: 84px;
+  }
 }
 
 .header  {
@@ -74,8 +82,12 @@
 @media (min-width: 850px) {
   .wrapper-container {
     width: 25%;
+    gap: 9px;
   }
 
+  .button {
+    margin-right: 58px;
+  }
   .board {
     max-width: none;
   }

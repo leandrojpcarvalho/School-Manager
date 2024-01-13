@@ -93,13 +93,6 @@
   opacity: 1;
 }
 
-.button {
-  margin-right: 31px;
-  &> div {
-    min-width: 84px;
-  }
-}
-
 .modal {
   animation: fadeIn .6s ease-in-out;
 }
