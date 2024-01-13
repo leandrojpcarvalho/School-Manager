@@ -57,11 +57,14 @@ img {
   cursor: pointer;
 }
 
+body {
+  background-color: black;
+}
+
 .page {
   margin: 0 auto;
 	min-width: 440px;
 	max-width: 860px;
-
 }
 
 .bimester-info {
@@ -70,7 +73,6 @@ img {
 }
 
 #root {
-  background-color: black;
   padding-top: 62px ;
 }
 
