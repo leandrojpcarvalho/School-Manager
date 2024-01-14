@@ -1,28 +1,29 @@
-import RequestFactory from "../classes/RequestFactory";
-import { APIFetch, APISubjectInfo, Method, SubjectInfo } from "../types";
+import RequestFactory from '../classes/RequestFactory';
+import { APIFetch, APISubjectInfo, Method, SubjectInfo } from '../types';
 
-const URL = 'http://localhost:3333/result/1';
-const ROUTE_PUT = import.meta.env.ROUTE_PUT ?? true;
+const URL = import.meta.env.VITE_BASE_URL;
+const ROUTE_PUT = import.meta.env.VITE_ROUTE_PUT || false;
 
 export default function useAPIConnection() {
-  
-  const getAllData = async() => {
+  const getAllData = async () => {
     try {
-      const res = await fetch(URL);
-      const rawData:APIFetch = await res.json();
+      const res = await fetch(URL.concat('/result/1'));
+      const rawData: APIFetch = await res.json();
       return rawData;
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
-  const requestFactory = new RequestFactory(URL);
-  
-  const requestAPI = async(obj: SubjectInfo | SubjectInfo[], method: Method) => {
+  const requestFactory = new RequestFactory(URL.concat('/result/1'));
+
+  const requestAPI = async (
+    obj: SubjectInfo | SubjectInfo[],
+    method: Method
+  ) => {
     try {
       const request = requestFactory.newRequest(method, obj);
-      console.log(request);
-      const res = await fetch(request)
+      const res = await fetch(request);
       if (!res.ok) {
         const errorMessage = await res.json();
         return errorMessage;
@@ -32,26 +33,26 @@ export default function useAPIConnection() {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const canUsePut = () => {
+    if(ROUTE_PUT) {
+      return false;
     } 
+    return true;
   }
 
   const defineRoute = (changes: SubjectInfo[]) => {
-    if (!ROUTE_PUT) {
-      return Promise.all(
-        changes.map((change) => {
-          if(change.method && change.method !== 'PUT') {
-            return requestAPI(change, change.method )
-          }
-        })
-      )
+    if (canUsePut()) {
+      return requestAPI(changes, 'PUT');
     }
-    return requestAPI(changes, 'PUT')
-  }
-
+    return Promise.all(changes.map((change) => requestAPI(change, 'POST')));
+  };
 
   const commitChanges = async (changes: SubjectInfo[]) => {
     try {
-      const arrayData: APISubjectInfo[]= await defineRoute(changes);
+      const arrayData: APISubjectInfo[] = await defineRoute(changes);
       const hasInvalidData = arrayData.find((subject) =>
         Object.prototype.hasOwnProperty.call(subject, 'message')
       );
@@ -59,8 +60,8 @@ export default function useAPIConnection() {
       return arrayData;
     } catch (error) {
       console.log(error);
-    } 
+    }
   };
 
-  return { requestAPI, getAllData, commitChanges }
+  return { requestAPI, getAllData, commitChanges };
 }

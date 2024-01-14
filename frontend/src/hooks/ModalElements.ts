@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { SubjectInfo } from "../types";
 
+const cantEdit = import.meta.env.VITE_ROUTE_PUT;
+
 export default function useModalElements(setTempSubject: (param: SubjectInfo[]) => void, info: SubjectInfo[]) {
   const [selected, setSelected] = useState<SubjectInfo>();
   const [nota, setNota] = useState<string>('0.0');
@@ -15,7 +17,7 @@ export default function useModalElements(setTempSubject: (param: SubjectInfo[]) 
       setNota('0.0');
     }
   }, [selected]);
-
+  
   useEffect(() => {
     setInterval(() => resetStatus(), 8000);
     const resetStatus = () => {
@@ -30,17 +32,21 @@ export default function useModalElements(setTempSubject: (param: SubjectInfo[]) 
   };
 
   const onClick = () => {
-    if (selected && rangeGradeValidation(nota)) {
-      const updatedInfo = info[info.indexOf(selected)];
-      updatedInfo.nota = Number(nota),
-      updatedInfo.isUpdated = true;
-      updatedInfo.method = updatedInfo.method ? 'POST' : 'PUT';
-      setTempSubject(info);
-      setNota(Number(nota).toFixed(1));
-      setAdded(true);
-      setError(undefined);
-    } else {
-      setError('A nota deve ser um numero entre 0 e 10');
+    if(selected && selected.nota !== Number(nota)){
+      
+      if (cantEdit && selected.method === 'PUT') {
+        setError('A edição de notas não está Desabilitada');
+      }else if (rangeGradeValidation(nota)) {
+        const updatedInfo = info[info.indexOf(selected)];
+        updatedInfo.nota = Number(nota),
+        updatedInfo.isUpdated = true;
+        setTempSubject(info);
+        setNota(Number(nota).toFixed(1));
+        setAdded(true);
+        setError(undefined);
+      } else {
+        setError('A nota deve ser um numero entre 0 e 10');
+      }
     }
   };
 

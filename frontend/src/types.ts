@@ -21,7 +21,7 @@ export type APIFetch = APISubjectInfo[];
 
 export type SubjectInfo = APISubjectInfo & {
   isUpdated?: boolean;
-  method?: Method
+  method: Method
 };
 
 export type PostData = SelectKeys<SubjectInfo, 'disciplina' | 'bimestre' | 'nota'>;

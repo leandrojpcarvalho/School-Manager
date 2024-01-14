@@ -8,6 +8,8 @@ export default class RequestFactory {
   }
 
   newRequest(method: Method, data: SubjectInfo | SubjectInfo[]) {
+    console.log(data, method);
+    
     let request: Request
     const fommatter = this.#getFormatter(method);
     if(Array.isArray(data)){

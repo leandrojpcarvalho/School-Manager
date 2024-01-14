@@ -46,7 +46,7 @@ export const dateFormatter = (dateSql: string) => new Date(dateSql.split('.')[0]
 export const treatmentData = (arrData: APIFetch) => {
   return arrData.reduce((acc, currData) => {
     const key = Bimestre[currData.bimestre]
-    const newData = currData;
+    const newData = {...currData, method: 'PUT'};
     return { ...acc, [key]: [...acc[key], newData]}
   }, INITIAL_STATE);
 };

@@ -22,7 +22,6 @@ export default function useModal (setData: (param: APIFetch) => void) {
       }
   } ,[show])
 
-
   const setShowModal = (obj: SubjectInfo[], bimestre: number) => {
     setTempSubject(tempDate(obj, bimestre));
     setShow(true);
