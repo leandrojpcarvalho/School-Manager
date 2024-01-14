@@ -8,6 +8,9 @@ const config: Options = {
   host: process.env.MYSQL_HOST || 'localhost',
   port: Number(process.env.PORT) || 3306,
   dialect: 'mysql',
+  define: {
+    underscored: true
+  }
 };
 
 export = config;

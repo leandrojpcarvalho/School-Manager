@@ -1,10 +1,15 @@
+import Joi from 'joi';
 import { TableResult } from '../interfaces/Resultado';
 
 export type AsyncResponse<T> = Promise<T>;
 
+export type SelectKeys<T, P extends keyof T> = Omit<T, P>
+
 export type ErrorType = {
   message: string;
 };
+
+export type SubjectsData = Omit<TableResult, 'studentId'>
 
 export type ServiceType<T> = {
   status: number;
@@ -17,5 +22,14 @@ export type Service<T> = AsyncResponse<ServiceType<PayloadType<T>>>;
 
 export type InsertResultData = {
   studentId: number|string;
-  result: Omit<TableResult, 'studentId'>;
+  result: SubjectsData;
 };
+
+export type UpdateData = {
+  studentId: number | string;
+  result: SubjectsData[];
+}
+
+export type SchemasJoi = {
+  [key: string]: Joi.ObjectSchema | Joi.ArraySchema
+}

@@ -6,7 +6,9 @@ export default {
     await queryInterface.createTable<Model<InferAttributes<Student>>>('students', {
       id: {
         allowNull: false,
-        type: DataTypes.STRING 
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
       },
       name: {
         allowNull:false,
@@ -15,10 +17,12 @@ export default {
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
         field: 'created_at'
       },
       updatedAt: {
         allowNull: false,
+        defaultValue: DataTypes.NOW,
         type: DataTypes.DATE,
         field: 'updated_at'
       }

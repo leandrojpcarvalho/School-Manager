@@ -32,7 +32,23 @@ export default class ModelResultado implements IModelResultado {
     return this.#model.create(result);
   }
 
-  async deleteResult({bimestre, disciplina, studentId}: TableResult) {
-    return await this.#model.destroy({where: { bimestre, disciplina, studentId}});
+  async deleteResult({ bimestre, disciplina, studentId }: TableResult) {
+    return await this.#model.destroy({
+      where: { bimestre, disciplina, studentId },
+    });
+  }
+
+  async updateGrade(data: TableResult) {
+    const { bimestre, disciplina, studentId, nota } = data;
+    const [register, isCreated] = await this.#model.findOrCreate(
+      {
+        where: { bimestre, disciplina, studentId },
+        defaults: data,
+      });
+    if(!isCreated) {
+      await this.#model.scope('clean').update( { nota }, { where: { bimestre, disciplina, studentId }});
+      return {...register.dataValues, nota, updatedAt: (new Date()).toLocaleDateString('pt-BR')};
+    }
+    return register.dataValues;
   }
 }

@@ -1,4 +1,4 @@
-export interface TableStudent {
-  id: string,
-  name: string,
-}
+import { InferAttributes } from 'sequelize';
+import Student from '../db/models/Student';
+
+export interface TableStudent extends InferAttributes<Student> {}

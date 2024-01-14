@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { IControllerResultado } from '../interfaces/Controller';
 import ServiceResultado from '../service/resultado';
 
-
 export default class ControllerResultado implements IControllerResultado {
   #service: ServiceResultado;
 
@@ -25,6 +24,7 @@ export default class ControllerResultado implements IControllerResultado {
     });
     return res.status(status).json(payload);
   }
+
   async deleteResult(req: Request, res: Response) {
     const { id } = req.params;
     const { body } = req;
@@ -32,6 +32,13 @@ export default class ControllerResultado implements IControllerResultado {
       result: body,
       studentId: Number(id),
     });
+    return res.status(status).json(payload);
+  }
+
+  async updateData(req: Request, res: Response) {
+    const { id } = req.params;
+    const { body } = req;
+    const  { status, payload} = await this.#service.updateResult({result: body, studentId:id});
     return res.status(status).json(payload);
   }
 }
