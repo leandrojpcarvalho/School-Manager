@@ -1,12 +1,12 @@
 import {Bimestre, Disciplina} from '../shared/enums'
 
 export type APISubjectInfo = {
-  studentId: string;
+  studentId: number;
   bimestre: BimestreType;
   disciplina: DisciplinaType;
   nota: number;
-  createdAt: string;
-  updatedAt: string;
+  criadoEm: string;
+  atualizadoEm: string;
 };
 
 export type BimestreType = keyof typeof Bimestre;
@@ -15,12 +15,7 @@ export type DisciplinaType = keyof typeof Disciplina;
 
 export type APIFetch = APISubjectInfo[];
 
-export type SubjectInfo = {
-  studentId: string;
-  bimestre: BimestreType;
-  disciplina: DisciplinaType;
-  nota: number;
-  creadaEm: string;
+export type SubjectInfo = APISubjectInfo & {
   isUpdated?: boolean;
 };
 

@@ -19,23 +19,25 @@ const INITIAL_STATE: BimesterBoard = {
 
 export const transformData = (obj: APISubjectInfo): SubjectInfo => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { createdAt, updatedAt, ...rest } = obj;
+  const { criadoEm, ...rest } = obj;
   return {
-      creadaEm: dateFormatter(createdAt),
+      criadoEm: dateFormatter(criadoEm),
+      isUpdated: false,
       ...rest,
     };
 }
 
 export const createNewSubject = (disciplina: keyof typeof Disciplina, bimestre: BimestreType): SubjectInfo=> {
-  const newDate = {
+  const date = new Date().toLocaleDateString('pt-br')
+  return {
     bimestre,
-    creadaEm: new Date().toLocaleDateString('pt-br'),
+    criadoEm: date,
     disciplina,
     nota: 0,
-    studentId: 'student',
+    studentId: 0,
     isUpdated: false,
+    atualizadoEm: date
   };
-  return newDate;
 }
 
 export const dateFormatter = (dateSql: string) => new Date(dateSql.split('.')[0]).toLocaleDateString('pt-BR');

@@ -11,7 +11,7 @@ type PropType = {
 }
 
 function SubjectCard({ info, notAllInfo, modal}: PropType) {
-  const { disciplina, creadaEm, nota } = info;
+  const { disciplina, criadoEm, nota } = info;
   const showAllInfo = () => notAllInfo ? 'none' : ''
   return (
     <Wrapper className={modal ? 'flex grow shine' : ''} $disciplina={modal ? (modal.isSelected ? disciplina : `${disciplina}Op`) : disciplina}>
@@ -21,7 +21,7 @@ function SubjectCard({ info, notAllInfo, modal}: PropType) {
           $weight={500}>
           {disciplina}
         </PCustom>
-        <PCustom className={showAllInfo()}>{creadaEm}</PCustom>
+        <PCustom className={showAllInfo()}>{criadoEm}</PCustom>
       </div>
       <div className={`footer flex ${showAllInfo()}`}>
         <img

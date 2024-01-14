@@ -16,10 +16,11 @@ services:
   backend: 
     build: backend
     container_name: school_manager_backend
+    command: dev
     ports:
       - 3333:3333
     volumes:
-      - ./backend:/app/backend:rw
+      - ./backend:/app:rw
     tty: true
     restart: always
     environment:
@@ -43,8 +44,7 @@ services:
       - 3000:3000
     command: dev
     volumes:
-      - /home/leandro/programacao/avaliacoes/MBPsicologia/frontend
-      - ./frontend:/app/frontend:rw
+      - ./frontend:/app:rw
     tty: true
     environment:
       - VITE_BASE_URL=http://localhost:3333
