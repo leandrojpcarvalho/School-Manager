@@ -46,7 +46,7 @@ export default class ModelResultado implements IModelResultado {
         defaults: data,
       });
     if(!isCreated) {
-      await this.#model.scope('clean').update( { nota }, { where: { bimestre, disciplina, studentId }});
+      await this.#model.scope('student').update( { nota }, { where: { bimestre, disciplina, studentId }});
       return {...register.dataValues, nota, updatedAt: (new Date()).toLocaleDateString('pt-BR')};
     }
     return register.dataValues;

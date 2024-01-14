@@ -34,6 +34,7 @@ export default function useModalElements(setTempSubject: (param: SubjectInfo[]) 
       const updatedInfo = info[info.indexOf(selected)];
       updatedInfo.nota = Number(nota),
       updatedInfo.isUpdated = true;
+      updatedInfo.method = updatedInfo.method ? 'POST' : 'PUT';
       setTempSubject(info);
       setNota(Number(nota).toFixed(1));
       setAdded(true);

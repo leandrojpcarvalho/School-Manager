@@ -36,7 +36,8 @@ export const createNewSubject = (disciplina: keyof typeof Disciplina, bimestre: 
     nota: 0,
     studentId: 0,
     isUpdated: false,
-    atualizadoEm: date
+    atualizadoEm: date,
+    method: 'POST'
   };
 }
 
