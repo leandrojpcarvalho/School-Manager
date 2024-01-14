@@ -1,9 +1,9 @@
 import Joi from 'joi';
 import { TableResult } from '../../interfaces/Resultado';
 import { Bimestre, Disciplina } from '../../interfaces/Enums';
-import { SelectKeys } from '../../types';
+import { RemoveKeys } from '../../types';
 
-type BodyData = SelectKeys<TableResult, 'studentId' | 'id' | 'atualizadoEm' | 'criadoEm'>;
+type BodyData = RemoveKeys<TableResult, 'studentId' | 'id' | 'atualizadoEm' | 'criadoEm'>;
 type DeleteData = Omit<BodyData, 'nota'>;
 
 const bimestre = Object.values(Bimestre).filter((data) => !Number(data));

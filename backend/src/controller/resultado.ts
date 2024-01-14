@@ -28,17 +28,14 @@ export default class ControllerResultado implements IControllerResultado {
   async deleteResult(req: Request, res: Response) {
     const { id } = req.params;
     const { body } = req;
-    const { status, payload } = await this.#service.deleteResult({
-      result: body,
-      studentId: Number(id),
-    });
+    const { status, payload } = await this.#service.deleteResult({studentId: Number(id), ...body });
     return res.status(status).json(payload);
   }
 
   async updateData(req: Request, res: Response) {
     const { id } = req.params;
     const { body } = req;
-    const  { status, payload} = await this.#service.updateResult({result: body, studentId:id});
+    const  { status, payload} = await this.#service.updateResult({result: body, studentId:Number(id)});
     return res.status(status).json(payload);
   }
 }

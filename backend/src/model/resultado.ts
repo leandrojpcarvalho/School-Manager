@@ -2,7 +2,7 @@ import Resultado from '../db/models/Resultado';
 import Student from '../db/models/Student';
 import { IModelResultado } from '../interfaces/Model';
 import { TableResult } from '../interfaces/Resultado';
-import { InsertResultData } from '../types';
+import { DeleteType, InsertResultData } from '../types';
 
 export default class ModelResultado implements IModelResultado {
   #model;
@@ -22,9 +22,9 @@ export default class ModelResultado implements IModelResultado {
     });
   }
 
-  getAll({ id, name }: Student) {
-    return this.#model.findAll({
-      where: { studentId: `student-${name}-${id}` },
+  getAll({ id }: Student) {
+    return this.#model.scope('student').findAll({
+      where: { studentId: id },
     });
   }
 
@@ -32,7 +32,7 @@ export default class ModelResultado implements IModelResultado {
     return this.#model.create(result);
   }
 
-  async deleteResult({ bimestre, disciplina, studentId }: TableResult) {
+  async deleteResult({ bimestre, disciplina, studentId }: DeleteType) {
     return await this.#model.destroy({
       where: { bimestre, disciplina, studentId },
     });

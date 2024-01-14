@@ -4,8 +4,8 @@ import sequelize from '../config/database';
 import Student from './Student';
 
 class Resultado extends Model<InferAttributes<Resultado>, InferCreationAttributes<Resultado>>{
-  declare id: CreationOptional<number>;
-  declare studentId: string;
+  declare id: CreationOptional<string>;
+  declare studentId: number;
   declare bimestre: keyof typeof Bimestre;
   declare nota: number;
   declare disciplina: keyof typeof Disciplina;
@@ -23,7 +23,11 @@ Resultado.init({
   studentId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    unique: 'compose'
+    unique: 'compose',
+    references: {
+      key: 'id',
+      model: Student,
+    }
   },
   bimestre: {
     type: DataTypes.STRING,
@@ -51,19 +55,20 @@ Resultado.init({
   }
 }, {
   sequelize,
+  timestamps: false,
   modelName: 'resultados',
-  underscored: true,
 });
 
-Resultado.addScope('clean', {
+Resultado.addScope('student', {
   include: {
     model: Student,
-    attributes: []
+    as: 'Student',
+    attributes: ['name']
   }
 });
 
 
-Resultado.belongsTo(Student);
-Student.hasMany(Resultado);
+Resultado.belongsTo(Student, { targetKey: 'id', as: 'Student'});
+Student.hasMany(Resultado, { keyType: 'id', as: 'Results' });
 
 export default Resultado;
