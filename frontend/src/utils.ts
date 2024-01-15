@@ -1,4 +1,4 @@
-import { Bimestre, Disciplina } from "../shared/enums";
+import { Bimestre, Disciplina } from "./enums";
 import { APIFetch, APISubjectInfo, BimesterBoard, BimestreType, SubjectInfo } from "./types";
 
 export const BIMESTER_MAP: (keyof typeof Bimestre)[] = ['PRIMEIRO','SEGUNDO','TERCEIRO', "QUARTO"];
@@ -18,11 +18,11 @@ const INITIAL_STATE: BimesterBoard = {
 }
 
 export const transformData = (obj: APISubjectInfo): SubjectInfo => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { criadoEm, ...rest } = obj;
   return {
       criadoEm: dateFormatter(criadoEm),
       isUpdated: false,
+      method: 'PUT',
       ...rest,
     };
 }
@@ -45,7 +45,7 @@ export const dateFormatter = (dateSql: string) => new Date(dateSql.split('.')[0]
 
 export const treatmentData = (arrData: APIFetch) => {
   return arrData.reduce((acc, currData) => {
-    const key = Bimestre[currData.bimestre]
+    const key = Bimestre[currData.bimestre as BimestreType]
     const newData = {...currData, method: 'PUT'};
     return { ...acc, [key]: [...acc[key], newData]}
   }, INITIAL_STATE);

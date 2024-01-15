@@ -51,7 +51,7 @@ export default function ReportCardBimester({ cards, bimestre }: PropType) {
         <Button
           $image={''}
           aria-hidden={false}
-          className='flex button grow'
+          className='flex button'
           onClick={() => setShowModal(subjects, bimestre-1)}
         >
           <PCustom $color='black' $size={16}  $weight={600} className='flex content'>

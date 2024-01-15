@@ -1,4 +1,4 @@
-import { Bimestre } from '../../../shared/enums';
+import { Bimestre } from '../../enums';
 import { PCustom, Button, Input } from '../../styledComponents';
 import { SubjectInfo } from '../../types';
 import images from '../../assets';

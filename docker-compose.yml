@@ -16,7 +16,7 @@ services:
   backend: 
     build: backend
     container_name: school_manager_backend
-    command: dev
+    command: start
     ports:
       - 3333:3333
     volumes:
@@ -42,7 +42,6 @@ services:
     container_name: school_manager_frontend
     ports:
       - 3000:3000
-    command: dev
     volumes:
       - ./frontend:/app:rw
     tty: true

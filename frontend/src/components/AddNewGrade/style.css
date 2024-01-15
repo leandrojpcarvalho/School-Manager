@@ -22,7 +22,7 @@
   background-color: rgba(15, 15, 15, 1);
   padding-bottom: 24px;
   width: 100%;
-  align-items: flex-end
+  align-items: flex-end;
 }
 
 .modal-wrapper > .subjects.flex.column {

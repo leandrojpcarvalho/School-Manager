@@ -1,4 +1,4 @@
-import {Bimestre, Disciplina} from '../shared/enums'
+import {Bimestre, Disciplina} from './enums'
 
 export type APISubjectInfo = {
   studentId: number;

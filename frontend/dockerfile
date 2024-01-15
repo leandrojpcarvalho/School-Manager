@@ -5,4 +5,4 @@ COPY *.json .
 RUN npm install
 EXPOSE 3333
 ENTRYPOINT [ "npm", "run" ]
-CMD [ "start" ]
+CMD [ "dev" ]

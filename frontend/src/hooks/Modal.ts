@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { APIFetch, SubjectInfo } from "../types";
-import { Bimestre } from "../../shared/enums";
+import { Bimestre } from "../enums";
 import useAPIConnection from "./APIConnection";
 import { BIMESTER_MAP, SUBJECTS, createNewSubject } from "../utils";
 

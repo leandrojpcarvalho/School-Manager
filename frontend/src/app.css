@@ -97,12 +97,15 @@ body {
     display: flex;
     align-items: center;
   }
+  .grow:hover {
+    transition: none;
+    -ms-transform: none;
+    transform: none;
+  }
 }
 
-.grow:hover
-{
+.grow:hover {
   transition: 0.2s ease-in-out;
-  -xpedu-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
