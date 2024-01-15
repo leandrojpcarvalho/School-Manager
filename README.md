@@ -1,6 +1,6 @@
-**School Manager**
+# School Manager
 
-**Descrição do Projeto**
+## Descrição do Projeto
 
 O School Manager é uma aplicação desenvolvida para facilitar a apresentação de boletins escolares. Ele oferece uma plataforma intuitiva e fácil de usar para professores e administradores escolares inserirem, gerenciarem e compartilharem os boletins de notas dos alunos. A aplicação visa simplificar o processo de criação e distribuição de relatórios acadêmicos, promovendo uma comunicação eficiente entre escola, professores, alunos e seus responsáveis.
 
