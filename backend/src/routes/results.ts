@@ -9,13 +9,7 @@ const middlewareFactory = new MiddlewareMaker();
 routeResultado.delete(
   '/:id',
   middlewareFactory.createMiddleware('deleteSchema'),
-  async (req, res, next) => {
-    try {
-      await resultController.deleteResult(req, res);
-    } catch (error) {
-      next(error);
-    }
-  }
+  resultController.deleteResult,
 );
 
 routeResultado.post(

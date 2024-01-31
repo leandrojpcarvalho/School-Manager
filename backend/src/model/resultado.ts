@@ -5,10 +5,10 @@ import { TableResult } from '../interfaces/Resultado';
 import { DeleteType, InsertResultData } from '../types';
 
 export default class ModelResultado implements IModelResultado {
-  #model;
+  #model: typeof Resultado;
 
-  constructor() {
-    this.#model = Resultado;
+  constructor(model = Resultado) {
+    this.#model = model;
   }
 
   getOne({ result, studentId }: InsertResultData) {
